@@ -10,6 +10,11 @@
 .row{
     display: flex;
     flex-direction: row;
+    align-items: center;
+}
+
+.marginRightM{
+    margin-right: 5px;
 }
 
 .column{
@@ -28,4 +33,11 @@
     border: 1px solid #d3dae6;
     border-radius: 4px;
     box-shadow: 0 2px 2px -1px rgb(152 162 179 / 30%), 0 1px 5px -2px rgb(152 162 179 / 30%);
+}
+
+.headingStyle{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
 }

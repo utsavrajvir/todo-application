@@ -9,11 +9,11 @@ export const CompletedTodosList = () => {
     return(
         <>
           {
-            todoListReducer.map(todo => (
+            todoListReducer.map((todo, index) => (
                 <>
                     {todo.status == 'completed' && (
                         <>
-                            <Task todo={todo}/>
+                            <Task todo={todo} index={index}/>
                             <EuiSpacer />
                         </>
                     )}

@@ -9,11 +9,11 @@ export const ActiveTodosList = () => {
     return(
         <>
           {
-            todoListReducer.map(todo => (
+            todoListReducer.map((todo, index) => (
                 <>
                     {todo.status == 'active' && (
                         <>
-                            <Task todo={todo}/>
+                            <Task todo={todo} index={index}/>
                             <EuiSpacer />
                         </>
                     )}

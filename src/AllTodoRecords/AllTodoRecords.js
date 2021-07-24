@@ -1,13 +1,12 @@
-import React from "react"
+import React, { useState } from "react"
 import {
     EuiFlexItem,
     EuiHorizontalRule,
     EuiText,
     EuiPanel,
-    EuiSpacer
+    EuiSpacer,
 } from "@elastic/eui"
 import "../style.css"
-import {Task} from "../Task"
 import {TodoAddEdit} from "../TodoAddEdit"
 import {useSelector} from "react-redux"
 import {AllTodosList} from "./AllTodosList"
@@ -21,18 +20,12 @@ export const AllTodoRecords = () => {
         <EuiFlexItem>
 
             <EuiFlexItem>
-                <EuiText><h3> Todo App </h3></EuiText>
-            </EuiFlexItem>
-
-            <EuiSpacer />
-
-            <EuiFlexItem>
                 <TodoAddEdit />
             </EuiFlexItem>
 
             <EuiSpacer />
 
-            <EuiFlexItem style={{justifyContent: 'space-between', flexDirection: 'row'}}>
+            <EuiFlexItem style={{justifyContent: 'space-between', flexDirection: 'row', width: '100%'}}>
 
                 <EuiFlexItem style={{width: '33%'}}>
                     <EuiText>All Tasks</EuiText>

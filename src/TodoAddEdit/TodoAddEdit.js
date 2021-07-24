@@ -3,15 +3,25 @@ import {
 } from '@elastic/eui/'
 import React, {useState} from 'react'
 import {ModalView} from "./modalView"
+import {useSelector, useDispatch} from 'react-redux'
+import * as types from "../reduxStore/types/todoList"
 
 export const TodoAddEdit = () => {
-    const [modal, setModal] = useState(false)
+    const todoModal = useSelector(state => state.TodoList.todoModal)
+    const dispatch = useDispatch() 
 
     return(
         <>
-            {modal && <ModalView setModal={setModal}/>}
+            {todoModal && <ModalView />}
             
-            <EuiButton onClick={() => setModal(true)} fill style={{width: '200px'}}>
+            <EuiButton onClick={() => {
+                dispatch({
+                    type: types.SET_TODO_MODAL,
+                    payload: {
+                        todoModal: true
+                    }
+                })
+            }} fill style={{width: '200px'}}>
                 Add
             </EuiButton>
         </>

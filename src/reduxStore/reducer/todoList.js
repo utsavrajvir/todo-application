@@ -3,7 +3,8 @@ import * as types from '../types/todoList';
 const initialState = {
     todoList: [],
     todoModal: false,
-    editTodo: {}
+    editTodo: {},
+    selectedTab: 'all'
 };
 
 export default (state = initialState, action) => {
@@ -22,6 +23,11 @@ export default (state = initialState, action) => {
             return {
                 ...state,
                 editTodo: action.payload.editTodo,
+            };
+        case types.SET_SELECTED_TAB:
+            return {
+                ...state,
+                selectedTab: action.payload.selectedTab,
             };
 
         default:

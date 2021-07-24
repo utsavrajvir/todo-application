@@ -2,11 +2,6 @@
     padding: 5px;
 }
 
-
-.paddingL{
-    padding: 10px;
-}
-
 .row{
     display: flex;
     flex-direction: row;
@@ -15,18 +10,6 @@
 
 .marginRightM{
     margin-right: 5px;
-}
-
-.column{
-    display: flex;
-    flex-direction: column;
-}
-
-.panel{
-    border: 1px solid #d3dae6;
-    border-radius: 4px;
-    box-shadow: 0 2px 2px -1px rgb(152 162 179 / 30%), 0 1px 5px -2px rgb(152 162 179 / 30%);
-    min-height: 200px;
 }
 
 .taskPanel{
@@ -40,4 +23,20 @@
     display: flex;
     flex-direction: row;
     align-items: center;
+}
+
+.panelStyle{
+    display: flex !important;
+    flex-direction: row !important; 
+    justify-content: space-between !important; 
+    width: 98% !important;
+}
+
+.allPanel{
+    width: 33% ;
+    margin: 5px ;
+}
+
+.navigationStyle{
+    padding: 0px 15px 15px !important;
 }

@@ -12,13 +12,12 @@ import React, { useState } from 'react'
 import "../style.css"
 import {useSelector, useDispatch} from "react-redux"
 import * as types from "../reduxStore/types/todoList"
-import {ModalView} from "../TodoAddEdit/modalView"
 
 export const Task = (props) => {
     const {todo, index} = props
     const [checked, setChecked] = useState(false)
     const todoListReducer = useSelector(state => state.TodoList.todoList)
-    const todoModal = useSelector(state => state.TodoList.todoModal)
+    const selectedTab = useSelector(state => state.TodoList.selectedTab)
     const dispatch = useDispatch()
 
     const onChange = (e) => {
@@ -32,6 +31,7 @@ export const Task = (props) => {
                     todoList: list
                 }
             })
+            localStorage.setItem('todoData', JSON.stringify(list))
         }
     }
 
@@ -59,15 +59,14 @@ export const Task = (props) => {
                 todoList: list
             }
         })
+        localStorage.setItem('todoData', list)
     }
 
     return (
         <EuiPanel className="row marginRightM">
-            
-            {/* {todoModal && <ModalView todo={todo}/>} */}
 
             {
-               todo.status != 'completed' && (
+               todo.status != 'completed' && selectedTab == 'all' && (
                 <EuiFlexItem style={{width: '10%'}}>
                     <EuiCheckbox
                         id={htmlIdGenerator()()}

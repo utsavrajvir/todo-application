@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React, { useEffect } from "react"
 import {
     EuiFlexItem,
     EuiHorizontalRule,
@@ -25,9 +25,9 @@ export const AllTodoRecords = () => {
 
             <EuiSpacer />
 
-            <EuiFlexItem style={{justifyContent: 'space-between', flexDirection: 'row', width: '100%'}}>
+            <EuiFlexItem className="panelStyle">
 
-                <EuiFlexItem style={{width: '33%'}}>
+                <EuiFlexItem className="allPanel">
                     <EuiText>All Tasks</EuiText>
                     
                     <EuiPanel className="paddingM">
@@ -36,7 +36,7 @@ export const AllTodoRecords = () => {
 
                 </EuiFlexItem>
 
-                <EuiFlexItem style={{width: '33%'}} >
+                <EuiFlexItem className="allPanel" >
                     <EuiText>Active Tasks</EuiText>
 
                     <EuiPanel className="paddingM">
@@ -45,7 +45,7 @@ export const AllTodoRecords = () => {
 
                 </EuiFlexItem>
 
-                <EuiFlexItem style={{width: '33%'}} >
+                <EuiFlexItem className="allPanel" >
                     <EuiText>Completed Tasks</EuiText>
 
                     <EuiPanel className="paddingM">

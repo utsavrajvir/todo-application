@@ -60,13 +60,15 @@ export const ModalView = (props) => {
 
     const onSubmit = () => {
         if(titleValue.trim() && descriptionValue.trim() && isEmpty(editTodoReducer)){
+            let list = [...todoListReducer, {id: htmlIdGenerator()(), title: titleValue, description: descriptionValue, status: 'all'}]
             dispatch({
                 type: types.SET_TODO_LIST,
                 payload: {
-                    todoList: [...todoListReducer, {id: htmlIdGenerator()(), title: titleValue, description: descriptionValue, status: 'all'}]
+                    todoList: list
                 }
             })
             closeModal()
+            localStorage.setItem('todoData', JSON.stringify(list))
         }else if(titleValue.trim() && descriptionValue.trim() && !isEmpty(editTodoReducer)){
             let list = [...todoListReducer]
             let index = list.findIndex(todo => todo.id == editTodoReducer.id)
@@ -78,6 +80,7 @@ export const ModalView = (props) => {
                 }
             })
             closeModal()
+            localStorage.setItem('todoData', JSON.stringify(list))
         }
     }
 

@@ -11,7 +11,7 @@ export const AllTodosList = () => {
           {
             todoListReducer.map((todo, index)=> (
                 <>
-                    {todo.status == 'all' && (
+                    {todo.status === 'all' && (
                         <>
                             <Task todo={todo} index={index}/>
                             <EuiSpacer />

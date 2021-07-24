@@ -3,7 +3,6 @@ import {useDispatch, useSelector} from "react-redux"
 import * as types from "../reduxStore/types/todoList"
 import { 
     EuiButton, 
-    EuiOverlayMask,
     EuiModal,
     EuiModalBody,
     EuiModalFooter,
@@ -18,7 +17,6 @@ import {
 import {isEmpty} from 'lodash'
 
 export const ModalView = (props) => {
-    const {todo} = props
     const [titleValue, setTitleValue] = useState('')
     const [descriptionValue, setDescriptionValue] = useState('')
     // const todoListReducer = useSelector(state => state.TodoList.todoList)
@@ -71,7 +69,7 @@ export const ModalView = (props) => {
             localStorage.setItem('todoData', JSON.stringify(list))
         }else if(titleValue.trim() && descriptionValue.trim() && !isEmpty(editTodoReducer)){
             let list = [...todoListReducer]
-            let index = list.findIndex(todo => todo.id == editTodoReducer.id)
+            let index = list.findIndex(todo => todo.id === editTodoReducer.id)
             list[index] = {...editTodoReducer, title: titleValue, description: descriptionValue}
             dispatch({
                 type: types.SET_TODO_LIST,

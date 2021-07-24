@@ -8,7 +8,7 @@ import {
     EuiFormRow,
     EuiIcon
 } from '@elastic/eui'
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import "../style.css"
 import {useSelector, useDispatch} from "react-redux"
 import * as types from "../reduxStore/types/todoList"
@@ -20,11 +20,28 @@ export const Task = (props) => {
     const selectedTab = useSelector(state => state.TodoList.selectedTab)
     const dispatch = useDispatch()
 
+    useEffect(() => {
+        if(todo.status === 'completed'){
+            setChecked(true)
+        }
+    }, [todo])
+
     const onChange = (e) => {
         if(e.target.checked){
             setChecked(e.target.checked)
             let list = [...todoListReducer]
-            list[index] = {...todo, status: todo.status == 'active' ? 'completed' : 'active'}
+            list[index] = {...todo, status: todo.status === 'active' ? 'completed' : 'active'}
+            dispatch({
+                type: types.SET_TODO_LIST,
+                payload: {
+                    todoList: list
+                }
+            })
+            localStorage.setItem('todoData', JSON.stringify(list))
+        }else{
+            setChecked(e.target.checked)
+            let list = [...todoListReducer]
+            list[index] = {...todo, status: 'active'}
             dispatch({
                 type: types.SET_TODO_LIST,
                 payload: {
@@ -66,7 +83,7 @@ export const Task = (props) => {
         <EuiPanel className="row marginRightM">
 
             {
-               todo.status != 'completed' && selectedTab == 'all' && (
+               selectedTab === 'all' && (
                 <EuiFlexItem style={{width: '10%'}}>
                     <EuiCheckbox
                         id={htmlIdGenerator()()}
@@ -95,7 +112,7 @@ export const Task = (props) => {
             </EuiFlexItem>
 
             {
-                todo.status != 'completed' && (
+                todo.status !== 'completed' && (
                     <EuiFlexItem style={{flexDirection: 'column', alignItems: 'space-around'}} grow={2}>
                         <EuiFlexItem>
                             <EuiIcon 
